@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiple Choice Quiz</h1>
+    <div id="quiz-container">
+        <div class="question">
+            <p>1. What is the nickname often given to Atlantic salmon</p>
+            <label><input type="radio" name="q1" value="Prince of the waters"> Prince of the waters</label><br>
+            <label><input type="radio" name="q1" value="Silver Bellies"> Silver Bellies</label><br>
+            <label><input type="radio" name="q1" value="King of the Fish"> King of the Fish</label><br>
+            <label><input type="radio" name="q1" value="Slippery Fins"> Slippery Fins</label><br>
+        </div>
+
+        <div class="question">
+            <p>2. Where can the species be found?</p>
+            <label><input type="radio" name="q2" value="Far offshore"> Far offshore</label><br>
+            <label><input type="radio" name="q2" value="Coastal seas"> Coastal seas</label><br>
+        </div>
+        <div class="question">
+            <p>2. What do they feed on in the wild?</p>
+            <label><input type="radio" name="q3" value="Plankton"> Plankton</label><br>
+            <label><input type="radio" name="q3" value="Pelagic invertebrates and other fish"> Pelagic invertebrates and other fish</label><br>
+        </div>
+
+	<div class="question">
+            <p>2. They are andromous, what does this mean?</p>
+            <label><input type="radio" name="q4" value="They migrate from the sea to fresh waters to spawn"> They migrate from the sea to fresh waters to spawn</label><br>
+            <label><input type="radio" name="q4" value="They migrate from fresh waters to the sea to spawn"> They migrate from fresh waters to the sea to spawn</label><br>
+        </div>
+
+	<div class="question">
+            <p>2. They are indicator species, what does this mean?</p>
+            <label><input type="radio" name="q5" value="Decline in wild salmon species indicates wider problems"> Decline in wild salmon species indicates wider problems</label><br>
+            <label><input type="radio" name="q5" value="The health of salmon populations closely reflects the status of the larger marine ecosystem"> They migrate from fresh waters to the sea to spawn</label><br>
+	    <label><input type="radio" name="q5" value="All of the above"> All of the above</label><br>
+        </div>
+
+
+        <button id="submitBtn">Submit</button>
+        <div id="feedback"></div>
+    </div>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            checkAnswers();
+        });
+
+        function checkAnswers() {
+            const correctAnswers = {
+                q1: 'King of the Fish',
+                q2: 'Coastal seas',
+		q3: 'Pelagic invertebrates and other fish',
+		q4: 'They migrate from the sea to fresh waters to spawn',
+		q5: 'All of the above'
+            };
+
+            let feedback = "";
+            for (let question in correctAnswers) {
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (userAnswer) {
+                    if (userAnswer.value === correctAnswers[question]) {
+                        feedback += `<p class="correct">Question ${question.charAt(1)}: Correct!</p>`;
+                    } else {
+                        feedback += `<p class="incorrect">Question ${question.charAt(1)}: Incorrect. The correct answer is ${correctAnswers[question]}.</p>`;
+                    }
+                } else {
+                    feedback += `<p class="incorrect">Question ${question.charAt(1)}: No answer provided.</p>`;
+                }
+            }
+            document.getElementById('feedback').innerHTML = feedback;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salmon Lifecycle Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question img {
+            max-width: 100%;
+            height: auto;
+        }
+        .result {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Salmon Lifecycle Quiz</h1>
+    <form id="quizForm">
+        <div class="question">
+            <p>1. What is the first stage of the salmon lifecycle?</p>
+            <select name="q1" class="dropdown">
+                <option value="">Please select</option>
+            </select>
+        </div>
+        <!-- Repeat the above block for each question -->
+        <div class="question">
+            <p>2. What is the second stage of the salmon lifecycle?</p>
+            <select name="q2" class="dropdown">
+                <option value="">Please select</option>
+            </select>
+        </div>
+        <!-- Add more questions as needed -->
+        <div class="question">
+            <p>3. What is the third stage of the salmon lifecycle?</p>
+            <select name="q3" class="dropdown">
+                <option value="">Please select</option>
+            </select>
+        </div>
+        <!-- Continue for all 8 questions -->
+        <div class="question">
+            <p>4. What is the fourth stage of the salmon lifecycle?</p>
+            <select name="q4" class="dropdown">
+                <option value="">Please select</option>
+            </select>
+        </div>
+        <div class="question">
+            <p>5. What is the fifth stage of the salmon lifecycle?</p>
+            <select name="q5" class="dropdown">
+                <option value="">Please select</option>
+            </select>
+        </div>
+        <div class="question">
+            <p>6. What is the sixth stage of the salmon lifecycle?</p>
+            <select name="q6" class="dropdown">
+                <option value="">Please select</option>
+            </select>
+        </div>
+        <div class="question">
+            <p>7. What is the seventh stage of the salmon lifecycle?</p>
+            <select name="q7" class="dropdown">
+                <option value="">Please select</option>
+            </select>
+        </div>
+        <div class="question">
+            <p>8. What is the eighth stage of the salmon lifecycle?</p>
+            <select name="q8" class="dropdown">
+                <option value="">Please select</option>
+            </select>
+        </div>
+        <div>
+            <img src="files/VR lesson slides/Slide19.png" alt="Salmon Lifecycle Diagram">
+        </div>
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+    <div class="result" id="result">
+        <h2>Quiz Results</h2>
+        <p id="answers"></p>
+    </div>
+    <script>
+        const options = [
+            { value: 'salmon-eggs', text: 'Salmon eggs' },
+            { value: 'alevins', text: 'Alevins' },
+            { value: 'fry', text: 'Fry' },
+            { value: 'parr', text: 'Parr' },
+            { value: 'smolt', text: 'Smolt' },
+            { value: 'adult-salmon', text: 'Adult Salmon' },
+            { value: 'broodstock', text: 'Broodstock' },
+            { value: 'processing', text: 'Processing' }
+        ];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        document.querySelectorAll('.dropdown').forEach(select => {
+            const shuffledOptions = shuffle([...options]);
+            shuffledOptions.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option.value;
+                opt.textContent = option.text;
+                select.appendChild(opt);
+            });
+        });
+
+        function checkAnswers() {
+            const form = document.getElementById('quizForm');
+            const answers = {
+                q1: 'salmon-eggs',
+                q2: 'alevins',
+                q3: 'fry',
+                q4: 'parr',
+                q5: 'smolt',
+                q6: 'adult-salmon',
+                q7: 'broodstock',
+                q8: 'processing'
+            };
+            let resultText = '';
+            for (let i = 1; i <= 8; i++) {
+                const userAnswer = form['q' + i].value;
+                resultText += `Question ${i}: ${userAnswer === answers['q' + i] ? 'Correct' : 'Incorrect'}<br>`;
+            }
+            document.getElementById('answers').innerHTML = resultText;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

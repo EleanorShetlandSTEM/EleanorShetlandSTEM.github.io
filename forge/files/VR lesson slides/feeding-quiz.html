@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Quiz</title>
+    <style>
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+        .answer {
+            margin-bottom: 20px;
+        }
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Matching Quiz</h2>
+        <form id="quizForm">
+            <div class="question">
+                <label for="q1">A</label>
+                <select id="q1" name="q1">
+                    <option value="">Select an answer</option>
+                    <option value="1">Good appetite - potential indicator of good health</option>
+                    <option value="2">Poor appetite - potential indicator of stress and disease</option>
+                    <option value="3">Potential underfeeding - increased swimming activity prior to feeding</option>
+                    <option value="4">Potential overfeeding- could lead to wastage and pollution of the environment</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q2">B</label>
+                <select id="q2" name="q2">
+                    <option value="">Select an answer</option>
+                    <option value="1">Good appetite - potential indicator of good health</option>
+                    <option value="2">Poor appetite - potential indicator of stress and disease</option>
+                    <option value="3">Potential underfeeding - increased swimming activity prior to feeding</option>
+                    <option value="4">Potential overfeeding- could lead to wastage and pollution of the environment</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q3">C</label>
+                <select id="q3" name="q3">
+                    <option value="">Select an answer</option>
+                    <option value="1">Good appetite - potential indicator of good health</option>
+                    <option value="2">Poor appetite - potential indicator of stress and disease</option>
+                    <option value="3">Potential underfeeding - increased swimming activity prior to feeding</option>
+                    <option value="4">Potential overfeeding- could lead to wastage and pollution of the environment</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q4">D</label>
+                <select id="q4" name="q4">
+                    <option value="">Select an answer</option>
+                    <option value="1">Good appetite - potential indicator of good health</option>
+                    <option value="2">Poor appetite - potential indicator of stress and disease</option>
+                    <option value="3">Potential underfeeding - increased swimming activity prior to feeding</option>
+                    <option value="4">Potential overfeeding- could lead to wastage and pollution of the environment</option>
+                </select>
+            </div>
+            <button type="button" onclick="checkAnswers()">Submit</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: "1",
+                q2: "2",
+                q3: "3",
+                q4: "4"
+            };
+            let resultText = "";
+            for (let [key, value] of Object.entries(answers)) {
+                const userAnswer = document.getElementById(key).value;
+                if (userAnswer === value) {
+                    resultText += `Question ${key.toUpperCase()}: Correct<br>`;
+                } else {
+                    resultText += `Question ${key.toUpperCase()}: Incorrect<br>`;
+                }
+            }
+            document.getElementById("result").innerHTML = resultText;
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>

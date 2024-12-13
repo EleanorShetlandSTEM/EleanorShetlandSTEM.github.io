@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .term {
+            margin-bottom: 10px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        .result {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Matching Quiz</h1>
+    <form id="quizForm">
+        <div class="term">
+            <label for="term1">1. </label>
+            <select id="term1" name="term1">
+                <option value="">Please select</option>
+                <option value="1">Feed production</option>
+                <option value="2">Broodstock selection</option>
+                <option value="3">Laboratory</option>
+                <option value="4">Fish welfare</option>
+            </select>
+        </div>
+        <div class="description">
+            <p>Good husbandry to promote fish welfare includes farming at locations with good quality water and oxygen content, stocking the cages in low densities, protecting the fish from predation and disease, and carrying out environmental monitoring. Fish welfare can be monitored by checking gill health and performing lice counts.</p>
+        </div>
+        <div class="term">
+            <label for="term2">2. </label>
+            <select id="term2" name="term2">
+                <option value="">Please select</option>
+                <option value="1">Feed production</option>
+                <option value="2">Broodstock selection</option>
+                <option value="3">Laboratory</option>
+                <option value="4">Fish welfare</option>
+            </select>
+        </div>
+        <div class="description">
+            <p>Feed must be manufactured to meet the salmon’s optimum requirements for growth and nutrition at each life stage. This is necessary for preventing deficiencies, malnutrition and disease.</p>
+        </div>
+        <div class="term">
+            <label for="term3">3. </label>
+            <select id="term3" name="term3">
+                <option value="">Please select</option>
+                <option value="1">Feed production</option>
+                <option value="2">Broodstock selection</option>
+                <option value="3">Laboratory</option>
+                <option value="4">Fish welfare</option>
+            </select>
+        </div>
+        <div class="description">
+            <p>Some salmon are chosen to produce the next generation. This selection is usually done based upon the physical characteristics such as growth, disease resistance, maturation rate and colour. In Scotland, fertilized eggs are imported to the hatcheries to produce larval and juvenile fish. This increases the population’s genetic diversity.</p>
+        </div>
+        <div class="term">
+            <label for="term4">4. </label>
+            <select id="term4" name="term4">
+                <option value="">Please select</option>
+                <option value="1">Feed production</option>
+                <option value="2">Broodstock selection</option>
+                <option value="3">Laboratory</option>
+                <option value="4">Fish welfare</option>
+            </select>
+        </div>
+        <div class="description">
+            <p>Aquaculture laboratories perform microbiological and environmental testing of water samples which helps identify potential issues with salmon welfare, for example by identifying harmful species of jellyfish and plankton.</p>
+        </div>
+        <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+    <div class="result" id="result">
+        <h2>Quiz Results</h2>
+        <p id="answers"></p>
+    </div>
+    <script>
+        function checkAnswers() {
+            const form = document.getElementById('quizForm');
+            const answers = {
+                term1: '4',
+                term2: '1',
+                term3: '2',
+                term4: '3'
+            };
+            let resultText = '';
+            for (let i = 1; i <= 4; i++) {
+                const userAnswer = form['term' + i].value;
+                resultText += `Term ${i}: ${userAnswer === answers['term' + i] ? 'Correct' : 'Incorrect'}<br>`;
+            }
+            document.getElementById('answers').innerHTML = resultText;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

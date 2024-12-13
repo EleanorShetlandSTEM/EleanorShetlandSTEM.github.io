@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill in the Blanks Activity</title>
+    <style>
+        .correct { color: green; }
+        .incorrect { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Fill in the Blanks Activity - Aquaculture Scotland</h1>
+    <p>Complete the sentences:</p>
+    <p>The farming of Scotland’s seas contributes over &pound;<input id="answer1" onfocus="clearFeedback('feedback1')" type="text" /> billion annually to the Scottish economy (Scottish Government 2021).</p>
+    <p>Salmon is the second largest food export in the UK, after whisky with around <input id="answer2" onfocus="clearFeedback('feedback2')" type="text" /> active farms harvesting more than <input id="answer3" onfocus="clearFeedback('feedback3')" type="text" /> tonnes annually.</p>
+    <p><input id="answer4" onfocus="clearFeedback('feedback4')" type="text" />% of all Scottish Mussels are grown in Shetland.</p>
+    <p>By 2030 the number of jobs supported by the sector could reach <input id="answer5" onfocus="clearFeedback('feedback5')" type="text" />. To thrive globally, the Scottish aquaculture sector needs a diverse workforce with the right skills - for 5 years’ time, 15 years’ time and beyond.</p>
+    <p><button id="submitBtn">Submit</button></p>
+    <p id="feedback1">1.</p>
+    <p id="feedback2">2.</p>
+    <p id="feedback3">3.</p>
+    <p id="feedback4">4.</p>
+    <p id="feedback5">5.</p>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function(event) {
+            checkAnswers(event);
+        });
+
+        function checkAnswers(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            var answers = [
+                { id: 'answer1', correct: '1.8', feedbackId: 'feedback1' },
+                { id: 'answer2', correct: '350', feedbackId: 'feedback2' },
+                { id: 'answer3', correct: '200000', feedbackId: 'feedback3' }, // No commas
+                { id: 'answer4', correct: '81', feedbackId: 'feedback4' },
+                { id: 'answer5', correct: '18000', feedbackId: 'feedback5' } // No commas
+            ];
+
+            answers.forEach(function(answer) {
+                var userAnswer = document.getElementById(answer.id).value.trim();
+                var feedback = document.getElementById(answer.feedbackId);
+
+                console.log(`Checking answer for ${answer.id}: "${userAnswer}" (expected: "${answer.correct}")`);
+
+                if (userAnswer === "") {
+                    feedback.textContent = `${answer.feedbackId.split('feedback')[1]}. Please provide an answer.`;
+                    feedback.className = 'incorrect';
+                } else if (userAnswer.replace(/,/g, '') === answer.correct) { // Remove commas for comparison
+                    feedback.textContent = `${answer.feedbackId.split('feedback')[1]}. Correct!`;
+                    feedback.className = 'correct';
+                } else {
+                    feedback.textContent = `${answer.feedbackId.split('feedback')[1]}. Incorrect. Try again!`;
+                    feedback.className = 'incorrect';
+                }
+            });
+        }
+
+        function clearFeedback(feedbackId) {
+            var feedback = document.getElementById(feedbackId);
+            feedback.textContent = `${feedbackId.split('feedback')[1]}. `;
+            feedback.className = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiple Choice Quiz</h1>
+    <div id="quiz-container">
+        <div class="question">
+            <p>1. How many portions of fish a week should a healthy, balanced diet ideally include?</p>
+            <label><input type="radio" name="q1" value="1"> 1</label><br>
+            <label><input type="radio" name="q1" value="2"> 2</label><br>
+            <label><input type="radio" name="q1" value="4"> 4</label><br>
+            <label><input type="radio" name="q1" value="6"> 6</label><br>
+        </div>
+
+        <div class="question">
+            <p>2. What are fish and shellfish good sources of</p>
+            <label><input type="radio" name="q2" value="Zinc"> Zinc</label><br>
+            <label><input type="radio" name="q2" value="Omega-3"> Omega-3</label><br>
+            <label><input type="radio" name="q2" value="Iodine"> Iodine</label><br>
+            <label><input type="radio" name="q2" value="Vitamins"> Vitamins</label><br>
+	    <label><input type="radio" name="q2" value="Omega-3 and vitamins"> Omega-3 and vitamins</label><br>
+            <label><input type="radio" name="q2" value="Omega-3 and iodine"> Omega-3 and iodine</label><br>
+            <label><input type="radio" name="q2" value="All of the above"> All of the above</label><br>
+
+        </div>
+
+
+        <button id="submitBtn">Submit</button>
+        <div id="feedback"></div>
+    </div>
+
+    <script>
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            checkAnswers();
+        });
+
+        function checkAnswers() {
+            const correctAnswers = {
+                q1: '2',
+                q2: 'Omega-3 and vitamins',
+            };
+
+            let feedback = "";
+            for (let question in correctAnswers) {
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (userAnswer) {
+                    if (userAnswer.value === correctAnswers[question]) {
+                        feedback += `<p class="correct">Question ${question.charAt(1)}: Correct!</p>`;
+                    } else {
+                        feedback += `<p class="incorrect">Question ${question.charAt(1)}: Incorrect. The correct answer is ${correctAnswers[question]}.</p>`;
+                    }
+                } else {
+                    feedback += `<p class="incorrect">Question ${question.charAt(1)}: No answer provided.</p>`;
+                }
+            }
+            document.getElementById('feedback').innerHTML = feedback;
+        }
+    </script>
+</body>
+</html>
