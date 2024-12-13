@@ -1,7 +1,7 @@
 # Development site for Seafood VR resources
 
-<a href="forge/index.html">Link Text</a>
+<a href="forge/index.html">Blue Sector VR Resources</a>
 
-<a href="marzipano/index.html">Link Text</a>
+<a href="marzipano/index.html">360 photo tour for desktop and mobile</a>
 
-<a href="tour.html">Link Text</a>
+<a href="tour.html">360 photo tour for Meta Quest VR headset</a>
