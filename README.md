@@ -1,2 +1,7 @@
-# trialseafoodmarzipano
-trial place to host seafood marzipano 360 tour
+# Development site for Seafood VR resources
+
+<a href="forge/index.html">Link Text</a>
+
+<a href="marzipano/index.html">Link Text</a>
+
+<a href="tour.html">Link Text</a>
