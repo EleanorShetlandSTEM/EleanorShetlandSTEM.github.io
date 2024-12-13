@@ -6,4 +6,4 @@
 
 <a href="tour.html">360 photo tour for Meta Quest VR headset</a>
 
-<a href="[url](https://youtu.be/f25jARuVQcw)">360 videos</a>
+<a href="https://youtu.be/f25jARuVQcw">360 videos</a>
